@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: white;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100vh;
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .sidebar img {
+    width: 30px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar a {
+    margin: 15px 0;
+    color: #888;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+
+  .sidebar a:hover {
+    color: #fff;
+  }
+
+  /* Main Content */
+  .main {
+    margin-left: 80px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+  }
+
+  .intro {
+    max-width: 600px;
+  }
+
+  .intro h1 {
+    font-size: 48px;
+    margin: 0;
+  }
+
+  .intro h1 span {
+    color: #f97316;
+  }
+
+  .intro p {
+    font-size: 18px;
+    color: #aaa;
+  }
+
+  .contact-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 2px solid #f97316;
+    color: #f97316;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .contact-btn:hover {
+    background: #f97316;
+    color: #1c1c1c;
+  }
+
+  /* Large J */
+  .large-j {
+    font-size: 300px;
+    font-weight: bold;
+    color: #f97316;
+  }
+
+  /* Background */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1c1c1c;
+    z-index: -1;
+  }
+
+  /* Invert Colors */
+  .invert-btn {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    color: #f97316;
+    cursor: pointer;
+  }
+
+  /* Social Icons */
+  .social-icons {
+    position: fixed;
+    left: 15px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .social-icons a {
+    color: #888;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s;
+    filter: drop-shadow(2px 2px 2px #000);
+  }
+
+  .social-icons a:hover {
+    color: #f97316;
+  }

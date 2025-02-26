@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c;
+      color: white;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 100vh;
+      background-color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .sidebar img {
+      width: 30px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      margin: 15px 0;
+      color: #888;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .intro {
+      max-width: 600px;
+      position: relative;
+    }
+
+    .intro h1 {
+      font-size: 48px;
+      margin: 0;
+      margin-bottom: 30px;
+      animation: slideIn 1s forwards;
+    }
+
+    .intro h1 span {
+      color: #f97316;
+    }
+
+    .intro p {
+      font-size: 18px;
+      color: #aaa;
+      margin-top: 20px;
+      animation: zoomIn 1s forwards;
+    }
+
+    .contact-btn {
+      margin-top: 40px;
+      padding: 20px 40px;
+      border: none;
+      color: white;
+      background: #f97316;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .contact-btn:hover {
+      background: #ff8a33;
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Background */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1c1c1c;
+      z-index: -1;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      position: fixed;
+      left: 15px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: #888;
+      font-size: 24px;
+      text-decoration: none;
+      transition: color 0.3s;
+      filter: drop-shadow(2px 2px 2px #000);
+    }
+
+    .social-icons a:hover {
+      color: #f97316;
+    }
+
+    /* Extra Bold Italic Text */
+    .extra-bold-text {
+      font-weight: 800;
+      font-style: italic;
+      font-size: 18px;
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      animation: zoomIn 1s forwards;
+    }
+
+    /* Right Section */
+    .right-section {
+      max-width: 400px;
+      margin-top: 20px;
+    }
+
+    /* Navigation links in top right */
+    .nav-links {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-style: italic;
+      font-size: 18px;
+      color: #f97316;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* Rotating 3D Skills Cube */
+    .skills-cube {
+      position: absolute;
+      top: 0;
+      right: -410px;
+      width: 150px;
+      height: 350px;
+      perspective: 800px;
+      transform-style: preserve-3d;
+      animation: rotateCube 10s infinite linear;
+      z-index: 1;
+    }
+
+    .skills-cube div {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #f97316;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      backface-visibility: hidden;
+    }
+
+    .skills-cube .front  { transform: rotateY(0deg) translateZ(75px); }
+    .skills-cube .back   { transform: rotateY(180deg) translateZ(75px); }
+    .skills-cube .right  { transform: rotateY(90deg) translateZ(75px); }
+    .skills-cube .left   { transform: rotateY(-90deg) translateZ(75px); }
+    .skills-cube .top    { transform: rotateX(90deg) translateZ(75px); }
+    .skills-cube .bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+    @keyframes rotateCube {
+      from { transform: rotateX(0deg) rotateY(0deg); }
+      to { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    /* Contatos Page */
+    .contatos {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .contatos h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 1000;
+      font-style: italic;
+      font-size: 36px;
+      color: #f97316;
+      margin-bottom: 40px;
+      animation: slideIn 1s forwards;
+    }
+
+    .contatos form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .contatos input, .contatos textarea {
+      padding: 15px;
+      border: 1px solid #888;
+      background-color: #333;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .contatos textarea {
+      resize: vertical;
+      height: 150px;
+    }
+
+    .contatos button {
+      padding: 15px 30px;
+      background-color: #f97316;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .contatos button:hover {
+      background-color: #ff8a33;
+    }
+
+    .contatos .info-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-style: italic;
+      font-size: 16px;
+      margin-top: 40px;
+    }
+
+    .contatos .info-text p {
+      color: #f97316;
+      margin-bottom: 30px;
+    }
+
+    .contatos .info-text ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      color: white;
+      text-align: left;
+    }
+
+    .contatos .info-text li {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    /* Seção de Projetos */
+    #projetos {
+      display: none;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px;
+      text-align: center;
+    }
+
+    #projetos h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-style: italic;
+      font-size: 36px;
+      color: #f97316;
+      margin-bottom: 40px;
+      animation: slideIn 1s forwards;
+    }
+
+    .projetos-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .projeto {
+      width: 100%;
+      max-width: 470px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .projeto:hover {
+      transform: scale(1.05);
+    }
+
+    .projeto img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .projeto p {
+      padding: 10px;
+      background-color: #333;
+      margin: 0;
+      font-size: 16px;
+      color: white;
+    }
+
+    /* Media Queries para Responsividade */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 50px;
+      }
+
+      .main {
+        margin-left: 60px;
+        padding: 20px;
+      }
+
+      .intro h1 {
+        font-size: 36px;
+      }
+
+      .intro p {
+        font-size: 16px;
+      }
+
+      .contact-btn {
+        padding: 15px 30px;
+        font-size: 18px;
+      }
+
+      .nav-links {
+        top: 10px;
+        right: 10px;
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+      }
+
+      .projeto {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        width: 40px;
+      }
+
+      .main {
+        margin-left: 50px;
+        padding: 10px;
+      }
+
+      .intro h1 {
+        font-size: 28px;
+      }
+
+      .intro p {
+        font-size: 14px;
+      }
+
+      .contact-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="imgit.jfif" alt="Logo">
+    <a href="mailto:fjamilly349@gmail.com"><img width="100" height="50" src="https://img.icons8.com/bubbles/100/gmail-new.png" alt="gmail-new"/></a>
+    <a href="https://github.com/JamillyFernandes" target="_blank"><img width="64" height="44" src="https://img.icons8.com/nolan/64/github.png" alt="github"/></a>
+    <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><img width="64" height="44" src="https://img.icons8.com/nolan/64/linkedin.png" alt="linkedin"/></a>
+  </div>
+
+  <div class="nav-links">
+    <a href="#inicio">Estreia</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contatos">Contatos</a>
+  </div>
+
+  <div class="main">
+    <!-- Página Inicial (Estreia) -->
+    <div class="intro" id="inicio">
+      <h1>Olá, sou <span>Jamilly</span>,<br>uma Desenvolvedora Web!</h1>
+      <div class="skills-cube">
+        <div class="front">HTML</div>
+        <div class="back">CSS</div>
+        <div class="right">JavaScript</div>
+        <div class="left">React.js</div>
+        <div class="top">Next.js</div>
+        <div class="bottom">Tailwind CSS</div>
+        <div class="aws">AWS</div>
+      </div>
+      <button class="contact-btn" onclick="toggleMoreInfo()">Saiba mais sobre mim</button>
+      <div class="right-section" id="more-info" style="display:none;">
+        <p class="extra-bold-text">Prazer, meu nome é Jamilly, tenho 19 anos e tenho em média 1 ano desde que entrei na área da Tecnologia. Comecei a estudar os Fundamentos da AWS pelo curso de Cloud Computing em Agosto de 2024, e durante os estudos eu descobri uma forma de entrar na Programação e me apaixonei desde já. Em Outubro de 2024 comecei minha jornada de Programação em um curso de Desenvolvimento Full Stack pela escola Vai Na Web, ainda estou dando continuidade ao curso que está previsto para acabar em Maio de 2025, e confesso que estou descobrindo o que mais me interessa e me dando a oportunidade de estudar variáveis linguagens.</p>
+        <p class="extra-bold-text">Além da área de Tecnologia, eu já me aventurei em alguns cursos como: Pré-Militar, e também possuo cursos de Secretariado, Atendimento ao Público, Introdução a Administração, Letramento Digital e Inteligência Artificial. Vocês conseguem ver com mais detalhes em meu LinkedIn.</p>
+        <p class="extra-bold-text">Sou uma profissional totalmente Proativa, Comprometida, com facilidade em Trabalho em Equipe, domino Inteligência Emocional e possuo um grande Foco em Resultados..</p>
+      </div>
+    </div>
+
+    <!-- Seção de Projetos -->
+    <div id="projetos">
+      <h2>Meus Projetos</h2>
+      <div class="projetos-container">
+        <!-- Projeto 1 -->
+        <div class="projeto">
+          <a href="https://projeto-tcc-dun-delta.vercel.app/" target="_blank">
+            <img src="./projetos/site1.png" alt="Arquitetura Serverless">
+          </a>
+          <p>Arquitetura Serverless</p>
+        </div>
+
+        <!-- Projeto 2 -->
+        <div class="projeto">
+          <a href="https://portologistica-pied.vercel.app/" target="_blank">
+            <img src="./projetos/site2.png" alt="Portologística">
+          </a>
+          <p>Portologística</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página de Contatos -->
+    <div class="contatos" id="contatos">
+      <h2>Entre em contato comigo</h2>
+      <form action="https://formspree.io/f/movjoowe" method="POST">
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="text" name="assunto" placeholder="Assunto" required>
+        <textarea name="mensagem" placeholder="Deixe sua Mensagem..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <div class="info-text">
+        <p>Sinta-se à vontade para entrar em contato comigo caso:</p>
+        <ul>
+          <li>Precisar de algum serviço</li>
+          <li>Precisar que eu me junte à sua equipe</li>
+          <li>Para me ajudar com alguma sugestão ou feedback</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="background"></div>
+
+  <div class="social-icons">
+    <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:fjamilly349@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/JamillyFernandes" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+
+  <script>
+    function toggleMoreInfo() {
+      const moreInfo = document.getElementById("more-info");
+      if (moreInfo.style.display === "block") {
+        moreInfo.style.display = "none";
+      } else {
+        moreInfo.style.display = "block";
+        moreInfo.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    // Navegação entre as seções
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        // Oculta todas as seções
+        document.querySelectorAll('.main > div').forEach(section => {
+          section.style.display = 'none';
+        });
+
+        // Exibe a seção clicada
+        if (targetSection) {
+          targetSection.style.display = 'block';
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Exibe a página inicial ao carregar o site
+    window.onload = function () {
+      document.getElementById('inicio').style.display = 'block';
+    };
+  </script>
+</body>
+</html>
