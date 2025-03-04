@@ -10,8 +10,8 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #1c1c1c;
-      color: white;
+      background: linear-gradient(135deg, #F0F4F8, #E8F5E9)  ; /* Cor de fundo alterada para #48C9B0 */
+      color: #2C3E50; /* Texto cinza escuro */
       overflow-y: auto;
       overflow-x: hidden;
     }
@@ -20,14 +20,20 @@
     .sidebar {
       position: fixed;
       top: 0;
-      left: 0;
+      left: -60px; /* Barra lateral escondida por padrão */
       width: 60px;
       height: 100vh;
-      background-color: #111;
+      background-color: #F0F4F8; /* Cinza escuro */
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 20px;
+      transition: left 0.3s ease; /* Transição suave */
+    }
+
+    /* Exibe a barra lateral apenas na página principal */
+    body.home .sidebar {
+      left: 0; /* Mostra a barra lateral */
     }
 
     .sidebar img {
@@ -44,18 +50,25 @@
     }
 
     .sidebar a:hover {
-      color: #fff;
+      color: #5DADE2; /* Azul claro para hover */
     }
 
     /* Main Content */
     .main {
-      margin-left: 80px;
+      margin-left: 0; /* Margem padrão sem barra lateral */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
       padding: 50px;
+      transition: margin-left 0.3s ease; /* Transição suave */
+      background-color: transparent; /* Fundo transparente */
+    }
+
+    /* Ajuste do conteúdo principal quando a barra lateral está visível */
+    body.home .main {
+      margin-left: 80px; /* Margem para acomodar a barra lateral */
     }
 
     .intro {
@@ -71,12 +84,12 @@
     }
 
     .intro h1 span {
-      color: #f97316;
+      color: #2E86C1; /* Azul safira para destaque */
     }
 
     .intro p {
       font-size: 18px;
-      color: #aaa;
+      color: #666; /* Cinza médio para texto */
       margin-top: 20px;
       animation: zoomIn 1s forwards;
     }
@@ -86,14 +99,14 @@
       padding: 20px 40px;
       border: none;
       color: white;
-      background: #f97316;
+      background: #2E86C1; /* Azul safira para botões */
       cursor: pointer;
       font-size: 20px;
       transition: background 0.3s, transform 0.3s;
     }
 
     .contact-btn:hover {
-      background: #ff8a33;
+      background: #5DADE2; /* Azul claro para hover */
       transform: scale(1.05);
     }
 
@@ -120,17 +133,6 @@
       }
     }
 
-    /* Background */
-    .background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #1c1c1c;
-      z-index: -1;
-    }
-
     /* Social Icons */
     .social-icons {
       position: fixed;
@@ -142,15 +144,15 @@
     }
 
     .social-icons a {
-      color: #888;
+      color: #2C3E50; /* Cinza escuro */
       font-size: 24px;
       text-decoration: none;
       transition: color 0.3s;
-      filter: drop-shadow(2px 2px 2px #000);
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
     }
 
     .social-icons a:hover {
-      color: #f97316;
+      color: #48C9B0; /* Verde água para hover */
     }
 
     /* Extra Bold Italic Text */
@@ -158,7 +160,7 @@
       font-weight: 800;
       font-style: italic;
       font-size: 18px;
-      color: #ddd;
+      color: #2C3E50; /* Cinza escuro */
       line-height: 1.6;
       margin-bottom: 15px;
       animation: zoomIn 1s forwards;
@@ -184,40 +186,42 @@
       font-weight: 800;
       font-style: italic;
       font-size: 18px;
-      color: #f97316;
+      color: #2E86C1; /* Azul safira */
       text-decoration: none;
     }
 
     .nav-links a:hover {
-      color: white;
+      color: #48C9B0; /* Verde água para hover */
     }
 
     /* Rotating 3D Skills Cube */
     .skills-cube {
       position: absolute;
       top: 0;
-      right: -410px;
-      width: 150px;
-      height: 350px;
+      right: -500px;
+      width: 450px;
+      height: 450px;
       perspective: 800px;
       transform-style: preserve-3d;
-      animation: rotateCube 10s infinite linear;
+      animation: rotateCube 7s infinite linear;
       z-index: 1;
+      display: visibility hidden; 
     }
 
     .skills-cube div {
       position: absolute;
       width: 150px;
       height: 150px;
-      background: transparent;
+      background: rgba(transparent); /* Azul safira com transparência */
+      border: 2px solid rgba(transparent); /* Azul safira */
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
       font-size: 20px;
-      color: #f97316;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      color: #2E86C1; /* Azul safira */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
       backface-visibility: hidden;
     }
 
@@ -231,6 +235,41 @@
     @keyframes rotateCube {
       from { transform: rotateX(0deg) rotateY(0deg); }
       to { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    /* Exibe o cubo 3D apenas em dispositivos móveis */
+    @media (max-width: 768px) {
+      .skills-cube {
+        right: -10px;
+        width: 450px;
+        height: 450px;
+      }
+
+      .skills-cube div {
+        width: 100px;
+        height: 100px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .intro h1 {
+        margin-left: -30px;
+        padding-left: 0;
+        font-size: 28px;
+      }
+
+      .skills-cube {
+        right: -40px;
+        width: 80px;
+        height: 160px;
+      }
+
+      .skills-cube div {
+        width: 80px;
+        height: 80px;
+        font-size: 14px;
+      }
     }
 
     /* Contatos Page */
@@ -247,7 +286,7 @@
       font-weight: 1000;
       font-style: italic;
       font-size: 36px;
-      color: #f97316;
+      color: #2E86C1; /* Azul safira */
       margin-bottom: 40px;
       animation: slideIn 1s forwards;
     }
@@ -262,8 +301,8 @@
     .contatos input, .contatos textarea {
       padding: 15px;
       border: 1px solid #888;
-      background-color: #333;
-      color: white;
+      background-color: #FAF3E0; /* Fundo branco */
+      color: #2C3E50; /* Cinza escuro */
       font-size: 16px;
       border-radius: 5px;
     }
@@ -275,7 +314,7 @@
 
     .contatos button {
       padding: 15px 30px;
-      background-color: #f97316;
+      background-color: #2E86C1; /* Azul safira */
       color: white;
       border: none;
       cursor: pointer;
@@ -285,7 +324,7 @@
     }
 
     .contatos button:hover {
-      background-color: #ff8a33;
+      background-color: #5DADE2; /* Azul claro para hover */
     }
 
     .contatos .info-text {
@@ -297,14 +336,14 @@
     }
 
     .contatos .info-text p {
-      color: #f97316;
+      color: #2E86C1; /* Azul safira */
       margin-bottom: 30px;
     }
 
     .contatos .info-text ul {
       list-style-type: disc;
       margin-left: 20px;
-      color: white;
+      color: #2C3E50; /* Cinza escuro */
       text-align: left;
     }
 
@@ -327,7 +366,7 @@
       font-weight: 800;
       font-style: italic;
       font-size: 36px;
-      color: #f97316;
+      color: #2E86C1; /* Azul safira */
       margin-bottom: 40px;
       animation: slideIn 1s forwards;
     }
@@ -360,21 +399,20 @@
 
     .projeto p {
       padding: 10px;
-      background-color: #333;
+      background-color: #fff; /* Fundo branco */
       margin: 0;
       font-size: 16px;
-      color: white;
+      color: #2C3E50; /* Cinza escuro */
     }
 
     /* Media Queries para Responsividade */
     @media (max-width: 768px) {
-      .sidebar {
+      body.home .sidebar {
         width: 50px;
       }
 
-      .main {
+      body.home .main {
         margin-left: 60px;
-        padding: 20px;
       }
 
       .intro h1 {
@@ -406,13 +444,12 @@
     }
 
     @media (max-width: 480px) {
-      .sidebar {
+      body.home .sidebar {
         width: 40px;
       }
 
-      .main {
+      body.home .main {
         margin-left: 50px;
-        padding: 10px;
       }
 
       .intro h1 {
@@ -438,12 +475,12 @@
     }
   </style>
 </head>
-<body>
+<body class="home">
   <div class="sidebar">
     <img src="imgit.jfif" alt="Logo">
-    <a href="mailto:fjamilly349@gmail.com"><img width="100" height="50" src="https://img.icons8.com/bubbles/100/gmail-new.png" alt="gmail-new"/></a>
-    <a href="https://github.com/JamillyFernandes" target="_blank"><img width="64" height="44" src="https://img.icons8.com/nolan/64/github.png" alt="github"/></a>
-    <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><img width="64" height="44" src="https://img.icons8.com/nolan/64/linkedin.png" alt="linkedin"/></a>
+    <a href="mailto:fjamilly349@gmail.com"><img width="100" height="50" src="https://img.icons8.com/fluency/48/gmail-new.png" alt="gmail-new"/></a>
+    <a href="https://github.com/JamillyFernandes" target="_blank"><img width="64" height="44" src="https://img.icons8.com/fluency/48/github.png" alt="github"/></a>
+    <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><img width="64" height="44" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/></a>
   </div>
 
   <div class="nav-links">
@@ -463,7 +500,6 @@
         <div class="left">React.js</div>
         <div class="top">Next.js</div>
         <div class="bottom">Tailwind CSS</div>
-        <div class="aws">AWS</div>
       </div>
       <button class="contact-btn" onclick="toggleMoreInfo()">Saiba mais sobre mim</button>
       <div class="right-section" id="more-info" style="display:none;">
@@ -514,8 +550,6 @@
       </div>
     </div>
   </div>
-
-  <div class="background"></div>
 
   <div class="social-icons">
     <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><i class="fab fa-linkedin"></i></a>
