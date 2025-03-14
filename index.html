@@ -5,7 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+
   <style>
+
+.titulo-com-duas-linhas {
+  position: relative; /* Para posicionar as linhas */
+  padding-bottom: 10px; /* Espaço entre o texto e as linhas */
+}
+
+
+/* Aumenta a especificidade */
+body #meusprojetos h2.titulo-com-duas-linhas {
+  position: relative;
+  padding-bottom: 15px;
+}
+
+body #meusprojetos h2.titulo-com-duas-linhas::before,
+body #meusprojetos h2.titulo-com-duas-linhas::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2E86C1;
+}
+
+body #meusprojetos h2.titulo-com-duas-linhas::before {
+  width: 70%;
+  height: 4px;
+  bottom: 0;
+}
+
+body #meusprojetos h2.titulo-com-duas-linhas::after {
+  width: 50%;
+  height: 3px;
+  bottom: -8px;
+}
+
     body {
       margin: 0;
       padding: 0;
@@ -77,11 +112,11 @@
     }
 
     .intro h1 {
-      font-size: 48px;
-      margin: 0;
-      margin-bottom: 30px;
-      animation: slideIn 1s forwards;
-    }
+  font-size: 54px; /* Aumentei o tamanho da fonte */
+  margin: 0;
+  margin-bottom: 30px;
+  animation: slideIn 1s forwards;
+}
 
     .intro h1 span {
       color: #2E86C1; /* Azul safira para destaque */
@@ -95,15 +130,16 @@
     }
 
     .contact-btn {
-      margin-top: 40px;
-      padding: 20px 40px;
-      border: none;
-      color: white;
-      background: #2E86C1; /* Azul safira para botões */
-      cursor: pointer;
-      font-size: 20px;
-      transition: background 0.3s, transform 0.3s;
-    }
+  margin-top: 40px;
+  padding: 25px 50px;
+  border: none;
+  color: white;
+  background: #2E86C1; /* Azul safira para botões */
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.3s, transform 0.3s;
+  border-radius: 25px; /* Bordas arredondadas */
+}
 
     .contact-btn:hover {
       background: #5DADE2; /* Azul claro para hover */
@@ -162,15 +198,37 @@
       font-size: 18px;
       color: #2C3E50; /* Cinza escuro */
       line-height: 1.6;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
       animation: zoomIn 1s forwards;
     }
 
     /* Right Section */
     .right-section {
-      max-width: 400px;
-      margin-top: 20px;
-    }
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.right-section p.extra-bold-text:first-child {
+  margin-top: 40px; /* Aumenta o espaço acima do primeiro parágrafo */
+}
+
+    .right-section {
+  display: flex; /* Coloca a imagem e o texto lado a lado */
+  align-items: flex-start; /* Alinha o conteúdo no topo */
+  gap: 20px; /* Espaço entre a imagem e o texto */
+}
+
+.right-section img {
+  width: 500px; /* Tamanho da imagem */
+  height: auto; /* Mantém a proporção */
+  border-radius: 10px; /* Borda arredondada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  position: absolute; /* Posiciona a imagem de forma absoluta */
+  top: 0; /* Alinha no topo */
+  right: -500px; /* Move para a direita */
+  top: 40%; /* Move a imagem 20% para baixo em relação ao container */
+
+}
 
     /* Navigation links in top right */
     .nav-links {
@@ -182,18 +240,39 @@
     }
 
     .nav-links a {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-style: italic;
-      font-size: 18px;
-      color: #2E86C1; /* Azul safira */
-      text-decoration: none;
-    }
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 21px;
+  color: #2E86C1; /* Azul safira */
+  text-decoration: none;
+  position: relative; /* Adicionado para posicionar a linha */
+  padding-bottom: 5px; /* Espaço entre o texto e a linha */
+}
 
-    .nav-links a:hover {
-      color: #48C9B0; /* Verde água para hover */
-    }
+.nav-links a:hover {
+  color: #48C9B0; /* Verde água para hover */
+}
 
+/* Adiciona a linha verde-água abaixo dos links */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* Espessura da linha */
+  background-color: #48C9B0; /* Cor verde-água */
+  transform: scaleX(0); /* Inicialmente a linha está invisível */
+  transform-origin: bottom right;
+  transition: transform 0.3s ease; /* Animação suave */
+}
+
+/* Mostra a linha ao passar o mouse */
+.nav-links a:hover::after {
+  transform: scaleX(1); /* Expande a linha */
+  transform-origin: bottom left;
+}
     /* Rotating 3D Skills Cube */
     .skills-cube {
       position: absolute;
@@ -272,14 +351,47 @@
       }
     }
 
-    /* Contatos Page */
-    .contatos {
-      display: none;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 40px;
-    }
+    /* Página de Contatos */
+.contatos {
+  display: none;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Container para alinhar título e texto lado a lado */
+.contato-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.titulo-com-duas-linhas {
+  flex: 1;
+  max-width: 300px;
+}
+
+.info-text {
+  flex: 2;
+}
+
+/* Outros estilos da seção de contatos... */
+
+    .contato-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.titulo-com-duas-linhas {
+  flex: 1;
+  max-width: 300px;
+}
+
+.info-text {
+  flex: 2;
+}
 
     .contatos h2 {
       font-family: 'Poppins', sans-serif;
@@ -313,15 +425,23 @@
     }
 
     .contatos button {
-      padding: 15px 30px;
-      background-color: #2E86C1; /* Azul safira */
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
+  padding: 10px 10px; /* Reduz o padding (espaçamento interno) */
+  background-color: #2E86C1; /* Azul safira */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Reduz o tamanho da fonte */
+  border-radius: 25px; /* Bordas arredondadas */
+  transition: background 0.3s; /* Efeito suave ao passar o mouse */
+}
+
+.contatos button:hover {
+  background-color: #5DADE2; /* Azul claro para hover */
+}
+
+.contatos button:hover {
+  background-color: #5DADE2; /* Azul claro para hover */
+}
 
     .contatos button:hover {
       background-color: #5DADE2; /* Azul claro para hover */
@@ -502,8 +622,11 @@
         <div class="top">Next.js</div>
         <div class="bottom">Tailwind CSS</div>
       </div>
+
       <button class="contact-btn" onclick="toggleMoreInfo()">Saiba mais sobre mim</button>
+
       <div class="right-section" id="more-info" style="display:none;">
+        <img src="./projetos/program.jpg" alt="Program">
         <p class="extra-bold-text">Prazer, meu nome é Jamilly, tenho 19 anos e tenho em média 1 ano desde que entrei na área da Tecnologia. Comecei a estudar os Fundamentos da AWS pelo curso de Cloud Computing em Agosto de 2024, e durante os estudos eu descobri uma forma de entrar na Programação e me apaixonei desde já. Em Outubro de 2024 comecei minha jornada de Programação em um curso de Desenvolvimento Full Stack pela escola Vai Na Web, ainda estou dando continuidade ao curso que está previsto para acabar em Maio de 2025, e confesso que estou descobrindo o que mais me interessa e me dando a oportunidade de estudar variáveis linguagens.</p>
         <p class="extra-bold-text">Além da área de Tecnologia, eu já me aventurei em alguns cursos como: Pré-Militar, e também possuo cursos de Secretariado, Atendimento ao Público, Introdução a Administração, Letramento Digital e Inteligência Artificial. Vocês conseguem ver com mais detalhes em meu LinkedIn.</p>
         <p class="extra-bold-text">Sou uma profissional totalmente Proativa, Comprometida, com facilidade em Trabalho em Equipe, domino Inteligência Emocional e possuo um grande Foco em Resultados..</p>
@@ -512,7 +635,7 @@
 
     <!-- Seção de Projetos -->
     <div id="projetos">
-      <h2>Meus Projetos</h2>
+      <h2 class="titulo-com-duas-linhas">Meus Projetos</h2>
       <div class="projetos-container">
         <!-- Projeto 1 -->
         <div class="projeto">
@@ -532,9 +655,8 @@
       </div>
     </div>
 
-    <!-- Página de Contatos -->
     <div class="contatos" id="contatos">
-      <h2>Entre em contato comigo</h2>
+      <h2 class="titulo-com-duas-linhas">Entre em contato comigo</h2>
       <form action="https://formspree.io/f/movjoowe" method="POST">
         <input type="email" name="email" placeholder="E-mail" required>
         <input type="text" name="assunto" placeholder="Assunto" required>
@@ -550,7 +672,6 @@
         </ul>
       </div>
     </div>
-  </div>
 
   <div class="social-icons">
     <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><i class="fab fa-linkedin"></i></a>
