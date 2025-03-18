@@ -359,6 +359,9 @@
     color: #FFA500; 
     margin-bottom: 40px;
     animation: slideIn 1s forwards;
+    text-shadow: 2px 2px 6px rgba(255, 165, 0, 0.7); /* Sombra laranja */
+
+
   }
 
   .contatos form {
@@ -443,8 +446,9 @@
     color: #FFA500; 
     margin-bottom: 40px;
     animation: slideIn 1s forwards;
-    text-align: center; 
-  }
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(255, 165, 0, 0.7); /* Sombra laranja */
+}
 
   .projetos-container {
     display: flex;
