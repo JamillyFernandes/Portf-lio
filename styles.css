@@ -350,11 +350,11 @@
 
 /* Estilos para a seção de contatos */
 .contatos {
-  display: none;
+  display: none; 
   max-width: 800px;
-  margin: 0 auto;
   text-align: center;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 40px; 
 }
 
 :root {
