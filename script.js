@@ -1,6 +1,4 @@
 
-
-
 // Função para alternar a visibilidade da seção "Saiba mais sobre mim"
 function toggleMoreInfo() {
     const moreInfo = document.getElementById("more-info");
@@ -73,3 +71,9 @@ window.onload = function () {
 if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
     document.body.classList.add('home');
 }
+
+// Mostrar a seção de contatos ao clicar no link "Contatos"
+document.querySelector('a[href="#contatos"]').addEventListener('click', function (e) {
+    e.preventDefault(); // Evita o comportamento padrão do link
+    document.getElementById('contatos').style.display = 'block'; // Mostra a seção
+});
