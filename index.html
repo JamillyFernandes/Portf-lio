@@ -37,7 +37,7 @@
     <!-- Página Inicial (Estreia) -->
     <div class="intro" id="inicio">
       <h1>Olá, sou <span>Jamilly</span>,<br>uma Desenvolvedora Web!</h1>
-      <p>Desenvolvedora Full Stack/ Computação em Nuvem </p>
+      <p>Desenvolvedora Full Stack / Computação em Nuvem </p>
 
       <div class="skills-cube">
         <div class="front">HTML</div>
@@ -62,39 +62,54 @@
     <div id="projetos">
       <h2 class="titulo-com-duas-linhas">Meus Projetos</h2>
       <div class="projetos-container">
-
+    
         <!-- Projeto 1 -->
         <div class="projeto">
           <a href="https://projeto-tcc-dun-delta.vercel.app/" target="_blank">
             <img src="./projetos/site1.png" alt="Arquitetura Serverless">
           </a>
-          <p>Arquitetura Serverless</p>
+          <p style="font-family: 'Poppins', sans-serif; font-weight: 800; font-style: italic; font-size: 16px; color: #FFA500; text-decoration: none; position: relative; transition: color 0.3s ease;"
+             onmouseover="this.style.color='#FF8C00'; this.style.textDecoration='underline';"
+             onmouseout="this.style.color='#FFA500'; this.style.textDecoration='none';">
+            Arquitetura Serverless
+          </p>
+          <p class="extra-bold-text">O projeto Arquitetura Serverless se deu por meio de um TCC para a finalização do curso de Computação em Nuvem dado pela Escola da Nuvem. O site foi criado para facilitar o entendimento dos alunos e professores sobre o que foi explicado presencialmente, além de também receber um destaque em meio a turma e deixar registrado o momento único de desenvolvimento e aprendizagem. No site você encontrará as vantagens, desafios e aplicações em ambientes de computação em nuvem, também poderá ver a Arquitetura e Orçamento proposto, e poderá conhecer os alunos que fizeram parte desse projeto incrível.</p>
         </div>
-
+  
         <!-- Projeto 2 -->
         <div class="projeto">
           <a href="https://portologistica-pied.vercel.app/" target="_blank">
             <img src="./projetos/site2.png" alt="Portologística">
           </a>
-          <p>Portologística</p>
-        </div>
+          <p style="font-family: 'Poppins', sans-serif; font-weight: 800; font-style: italic; font-size: 16px; color: #FFA500; text-decoration: none; position: relative; transition: color 0.3s ease;"
+             onmouseover="this.style.color='#FF8C00'; this.style.textDecoration='underline';"
+             onmouseout="this.style.color='#FFA500'; this.style.textDecoration='none';">
+            Portologística</p>
 
+          <p class="extra-bold-text">Este projeto foi desenvolvido como parte de um desafio da escola Vai na Web, que me ofereceu o curso de Desenvolvimento Full Stack. O objetivo era criar uma interface responsiva para o projeto "Porto Logística", utilizando técnicas modernas de design e desenvolvimento web. O desafio consistia em implementar uma página que simulasse o layout de um site relacionado à logística portuária, seguindo fielmente o design fornecido no Figma. O resultado foi uma aplicação que combina funcionalidade e estética, demonstrando minha capacidade de transformar designs em interfaces interativas e responsivas. Este projeto reforçou minhas habilidades em HTML, CSS, JavaScript e design responsivo, além de destacar minha atenção aos detalhes e comprometimento com a qualidade.</p>
+        </div>
+    
       </div>
     </div>
-
-    <!-- Contato -->
+    
     <div class="contatos" id="contatos">
-      <h2 class="titulo-com-duas-linhas">Entre em contato comigo</h2>
+      <!-- Contêiner para os textos lado a lado -->
+      <div class="contato-header">
+        <p class="texto-esquerda texto-destaque">Sinta-se à vontade para entrar em<br>contato comigo caso:</p>
+        <h2 class="titulo-direita">Entre em contato comigo</h2>
+      </div>
+    
+      <!-- Formulário -->
       <form action="https://formspree.io/f/movjoowe" method="POST">
         <input type="email" name="email" placeholder="E-mail" required>
         <input type="text" name="assunto" placeholder="Assunto" required>
         <textarea name="mensagem" placeholder="Deixe sua Mensagem..." required></textarea>
         <button type="submit">Enviar</button>
       </form>
-
+    
+      <!-- Lista -->
       <div class="info-text">
-        <p>Sinta-se à vontade para entrar em contato comigo caso:</p>
-        <ul>
+        <ul class="lista-destaque">
           <li>Precisar de algum serviço</li>
           <li>Precisar que eu me junte à sua equipe</li>
           <li>Para me ajudar com alguma sugestão ou feedback</li>
@@ -102,7 +117,7 @@
       </div>
     </div>
 
-    <!-- Ícones Sociais -->
+    <!--Mídias Sociais -->
     <div class="social-icons">
       <a href="http://www.linkedin.com/in/jamilly-fernandes-407a21272" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="mailto:fjamilly349@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -110,6 +125,11 @@
     </div>
 
   </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
 
   <script src="script.js"></script>
 
