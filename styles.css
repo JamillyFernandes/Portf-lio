@@ -331,7 +331,6 @@ body.home .main {
     }
   }
   
-  /* CORREÇÃO PARA SEÇÃO DE CONTATOS - MOBILE */
 @media (max-width: 768px) {
   .contatos {
     padding: 20px 15px !important;
