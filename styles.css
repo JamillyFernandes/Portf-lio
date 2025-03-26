@@ -312,17 +312,74 @@ body.home .main {
   to { transform: rotateX(360deg) rotateY(360deg); }
 }
 
-@media (max-width: 768px) {  
-  .skills-cube {
-    position: absolute; 
-    top: -180px;         
-    left: 30px;        
-    width: 450px;       
-    height: 450px;      
+@media (max-width: 768px) {
+
+  .projeto .mobile-hide {
+    display: none !important;
+  }
+    /* Estilos para outras seções (ex: projetos, intro, etc.) */
+    .skills-cube {
+      position: absolute;
+      top: -180px;
+      left: 30px;
+      width: 450px;
+      height: 450px;
+    }
+  
+    .right-section img {
+      display: none !important;
+    }
+  }
+  
+  /* CORREÇÃO PARA SEÇÃO DE CONTATOS - MOBILE */
+@media (max-width: 768px) {
+  .contatos {
+    padding: 20px 15px !important;
+    width: 100% !important;
+    box-sizing: border-box;
   }
 
-  .right-section img { 
-    display: none !important; 
+  .contato-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+  }
+
+  .texto-esquerda,
+  .titulo-direita {
+    transform: none !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    white-space: normal !important;
+  }
+
+  .texto-esquerda {
+    font-size: 18px !important;
+  }
+
+  .titulo-direita {
+    font-size: 24px !important;
+    padding: 8px !important;
+  }
+
+  form {
+    width: 100% !important;
+    transform: none !important;
+    padding: 15px !important;
+    box-sizing: border-box;
+  }
+
+  .info-text ul {
+    margin-top: 30px !important;
+    transform: none !important;
+    padding-left: 20px;
+  }
+
+  .contatos .info-text li {
+    font-size: 16px !important;
+    transform: none !important;
+    margin-bottom: 15px;
   }
 }
 
@@ -366,7 +423,7 @@ body.home .main {
 }
 
 .contatos {
-  display: none; 
+  display: block; 
   max-width: 800px;
   text-align: center;
   margin: 0 auto;
