@@ -21,12 +21,12 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
         const targetId = this.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
 
-        // Oculta todas as seções
+        // Ocultar todas as seções
         document.querySelectorAll('.main > div').forEach(section => {
             section.style.display = 'none';
         });
 
-        // Exibe a seção clicada
+        // Exibe as seções clicadas
         if (targetSection) {
             targetSection.style.display = 'block';
             targetSection.scrollIntoView({ behavior: 'smooth' });
@@ -34,7 +34,7 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
     });
 });
 
-// Validação do formulário de contato
+// formulário de contato
 document.querySelector('.contatos form').addEventListener('submit', function (e) {
     const email = this.querySelector('input[name="email"]');
     const assunto = this.querySelector('input[name="assunto"]');
@@ -46,7 +46,7 @@ document.querySelector('.contatos form').addEventListener('submit', function (e)
     }
 });
 
-// Efeito de destaque ao passar o mouse sobre os projetos
+// Efeito destaque quando passar o mouse sobre os projetos
 document.querySelectorAll('.projeto').forEach(projeto => {
     projeto.addEventListener('mouseenter', function () {
         this.style.transform = 'scale(1.05)';
@@ -58,7 +58,7 @@ document.querySelectorAll('.projeto').forEach(projeto => {
     });
 });
 
-// Exibe a página inicial ao carregar o site
+// Exibe a página inicial quando carregar o site
 window.onload = function () {
     // Oculta todas as seções, exceto a página inicial
     document.querySelectorAll('.main > div').forEach(section => {
@@ -67,12 +67,12 @@ window.onload = function () {
     document.getElementById('inicio').style.display = 'block';
 };
 
-// Verifica se a URL corresponde à página inicial
+// Certifica se a URL corresponde a página inicial
 if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
     document.body.classList.add('home');
 }
 
-// Mostrar a seção de contatos ao clicar no link "Contatos"
+// Mostra a seção de contatos ao clicar no link Contatos
 document.querySelector('a[href="#contatos"]').addEventListener('click', function (e) {
     e.preventDefault(); // Evita o comportamento padrão do link
     document.getElementById('contatos').style.display = 'block'; // Mostra a seção
